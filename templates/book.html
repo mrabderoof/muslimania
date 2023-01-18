@@ -1,0 +1,54 @@
+{% for book in about %}
+<div class="w3-container w3-card w3-white w3-margin-bottom">
+<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal">
+  <a href="{% url 'book-detail' book.id %}"></i>{{ book.title }}</a></h2>
+  
+<div class="w3-container">
+  {% if book.subtitle %}
+  <h5 class="w3-opacity"><b>{{ book.subtitle }}</b></h5>
+  {% endif %}
+  {% if book.publication_date %}
+  <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{ book.publication_date }} 
+  {% endif %}
+  <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Forever</h6>
+    <span class="w3-tag w3-teal w3-round">genre</span></h6>   
+
+  <p>{{data.biography}}</p>
+  {% for person in book.about.all %}
+        {% if forloop.first %}
+        <li> About: {{ person }},
+        {% elif forloop.last %}
+            {{ person }}</li>
+        {% else%}
+            {{person}},
+        {% endif %}
+    {% endfor %}
+
+    {% if book.about_who %}
+    <li>{{ book.about_who }}</li>
+    {% endif %}
+
+    {% for person in book.authors.all %}
+        {% if forloop.first %}
+        <li> Authors: {{ person }},
+        {% elif forloop.last %}
+            {{ person }}</li>
+        {% else%}
+            {{person}},
+        {% endif %}
+    {% endfor %}
+
+    {% if book.writer %}
+    <li>{{ book.writer }}</li>
+    {% endif %}
+
+    {% if book.publishers %}
+    <li>{{ book.publishers }}</li>
+    {% endif %}
+    {% if book.publication_date %}
+    <li>{{ book.publication_date }}</li>
+    {% endif %}
+<hr>
+</div>
+</div>
+{% endfor %}

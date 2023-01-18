@@ -1,0 +1,29 @@
+
+<div class="w3-section w3-bottombar w3-padding-16">
+    <span class="w3-margin-right">Filter:</span> 
+
+    {%if value == "profiles" %}
+    <button class="w3-button w3-black">ALL</button>
+    {% else %}
+    <button onclick="location.href='{% url 'profiles' %}'" class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>ALL</button>
+    {% endif %}
+
+    {%if value == "authors" %}
+    <button class="w3-button w3-black">Authors</button>
+    {% else %}
+    <button onclick="location.href='{% url 'authors' %}'" type="submit"  class="w3-button w3-white w3-hide-small">Authors</button>
+    {% endif %}
+
+    {% if value == "prophets" %}
+      <button class="w3-button w3-black"><i class="fa fa-map-pin w3-margin-right"></i>Prophets</button>
+    {% else %}
+      <button onclick="location.href='{% url 'prophets' %}'" type="submit"  class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Prophets</button>
+    {% endif %}
+
+    {%if value == "users" %}
+    <button class="w3-button w3-black">Users</button>
+    {% else %}
+    <button onclick="location.href='{% url 'users' %}'" type="submit"  class="w3-button w3-white w3-hide-small">Users</button>
+    {% endif %}
+
+</div>

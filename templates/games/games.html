@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block filters %}
+<div class="w3-section w3-bottombar w3-padding-16">
+  <span class="w3-margin-right">Filter:</span> 
+  <button class="w3-button w3-black">ALL</button>
+  <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Design</button>
+  <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Photos</button>
+  <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>
+</div>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container ">
+<h1>List Of Games</h1>
+
+<h3>Play</h3>
+    <a href="{% url 'quiz' %}">quizz</a></br>
+    <a href="{% url 'hangman' %}">hangman</a>
+
+<h3>Custom Create </h3>
+    <a href="{% url 'addQuestion' %}">quizz</a></br>
+    <a href="{% url 'addHangman' %}">hangman</a>
+
+{% endblock %}

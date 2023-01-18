@@ -1,0 +1,7 @@
+{% for f in filter.form %}
+<form method="get" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right">
+  {{ f.errors }}
+  {{ f }} 
+  <button type="submit">search</button>
+</form>
+{% endfor %}
