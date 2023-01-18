@@ -1,2 +1,0 @@
-# muslimania
-Everything Halaal
