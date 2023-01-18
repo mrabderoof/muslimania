@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block Sidebar%}
+{% endblock %}
+
+{% block content %}
+  
+<div class="w3-container w3-card w3-white w3-margin-bottom">
+  <div class="w3-container">
+    <h1 class="w3-center">Delete</h1>
+    <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur. </p>
+    <form method="POST">
+        {% csrf_token %}
+        Are you sure you want to delete this item?
+        <input type="submit" value="yes">
+        <form>
+          <input type="button" value="Back" onclick="history.back()">
+        </form>
+    </form>
+  </div>
+</br>
+</div>
+  
+  
+{% endblock %}
+
+{% block Pagination%}
+{% endblock %}
+
+
+

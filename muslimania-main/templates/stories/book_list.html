@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+
+{% block search%}
+{% include 'search.html' %}
+{% endblock %}
+
+{% block filters %}
+{% include 'filters.html'%}
+{% endblock %}
+
+{% block Sidebar%}
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="w3-center w3-padding-32">
+  <form action="create">
+    <input class="w3-button" type="submit" value="+">
+  </form>
+  <form action="/stories/books/chapter_create">
+    <input class="w3-button" type="submit" value="create chapter">
+  </form>
+</div>
+
+
+{% for book in object_list %}
+<div class="w3-container w3-card w3-white w3-margin-bottom">
+<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal">
+  <a href="{% url 'book-detail' book.id %}"></i>{{ book.title }}</a></h2>
+  
+<div class="w3-container">
+  {% if book.subtitle %}
+  <h5 class="w3-opacity"><b>{{ book.subtitle }}</b></h5>
+  {% endif %}
+  {% if book.publication_date %}
+  <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{ book.publication_date }} 
+  {% endif %}
+    <span class="w3-tag w3-teal w3-round">{{ data.sex }}</span></h6>
+
+  <p>{{data.biography}}</p>
+  {% for person in book.about.all %}
+                  {% if forloop.first %}
+                    <li> About: {{ person }},
+                  {% elif forloop.last %}
+                      {{ person }}</li>
+                  {% else%}
+                      {{person}},
+                  {% endif %}
+                {% endfor %}
+
+                {% if book.about_who %}
+                <li>{{ book.about_who }}</li>
+                {% endif %}
+
+                {% for person in book.authors.all %}
+                  {% if forloop.first %}
+                    <li> Authors: {{ person }},
+                  {% elif forloop.last %}
+                      {{ person }}</li>
+                  {% else%}
+                      {{person}},
+                  {% endif %}
+                {% endfor %}
+
+                {% if book.writer %}
+                <li>{{ book.writer }}</li>
+                {% endif %}
+
+                {% if book.publishers %}
+                <li>{{ book.publishers }}</li>
+                {% endif %}
+                {% if book.publication_date %}
+                <li>{{ book.publication_date }}</li>
+                {% endif %}
+  <hr>
+</div>
+</div>
+{% endfor %}
+<div class="container-fluid my-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+
+      <div class="card">
+        <h2 class="card-title text-center my-3">{{ post.title }}</h2>
+        <div class="text-muted text-center mb-3">
+          <div>
+            created: {{ post.created_on|date:"N j Y" }},
+            last updated: {{ post.updated_on|timesince }},
+            by <a class="badge badge-secondary" href="#">{{ post.author }}</a>
+          </div>
+          <div>
+            {% for tag in post.tags.all %}
+            <span class="badge badge-dark">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% if post.image %}
+        <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.title }}">
+        {% endif %}
+        <div class="card-text mt-5 p-4">
+          {{ post.content }}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+
+{% block Pagination%}
+{% include 'pagination.html' %}
+{% endblock %}

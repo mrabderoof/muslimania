@@ -1,0 +1,19 @@
+
+<div class="w3-section w3-bottombar w3-padding-16">
+    <span class="w3-margin-right">Filter:</span> 
+    
+    {%if value == "book" %}
+    <button class="w3-button w3-black">ALL</button>
+    {% else %}
+    <button onclick="location.href='{% url 'books' %}'" type="submit"  class="w3-button w3-white w3-hide-small">ALL</button>
+    {% endif %}
+
+    <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Authors</button>
+    <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Genre</button>
+
+    {% if value == "publisher" %}
+      <button class="w3-button w3-black"><i class="fa fa-map-pin w3-margin-right"></i>Publishers</button>
+    {% else %}
+      <button onclick="location.href='{% url 'publishers' %}'" type="submit"  class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Publishers</button>
+    {% endif %}
+</div>

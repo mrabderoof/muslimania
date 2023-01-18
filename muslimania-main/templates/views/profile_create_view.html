@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block Sidebar%}
+{% endblock %}
+
+{% block content %}
+  
+<div class="w3-container w3-card w3-white w3-margin-bottom">
+  <div class="w3-container">
+    <h1 id="Create">Create</h1>
+    <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur. </p>
+        <form method="POST" enctype="multipar/form-data">
+            {% csrf_token %}
+            {{form.as_p }}
+            {{form2.as_p }}
+            <input type="submit" value="submit">
+            <form>
+              <input type="button" value="Back" onclick="history.back()">
+            </form>
+        </form>
+        
+  </div>
+</br>
+</div>
+
+{% endblock %}
+
+{% block Pagination%}
+{% endblock %}
+
+
