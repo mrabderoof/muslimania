@@ -116,7 +116,7 @@ def profile_update_view(request, id):
     if form.is_valid():
         form.save()
         try:
-            return redirect('/users/profile/'+id)
+            return redirect("{% url profile_update_view' id %}")
         except:
             pass
     context['form'] = form
@@ -129,7 +129,7 @@ def profile_delete_view(request, id):
     if request.method=="POST":
         obj.delete()
         try:
-            return redirect('/users/profiles')
+            return redirect('profiles')
         except:
             pass
     context['form'] = form
