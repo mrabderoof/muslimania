@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-gne(^$49c71=b&e9&(ev-(mj!gcc*z7%gvx7@-+z(wtyxvs$n7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'muslimania.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'muslimania.up.railway.app']
 
 
 # Application definition
