@@ -1,1 +1,1 @@
-web: gunicorn muslimania.wsgi
+web: gunicorn muslimania.wsgi --log-file -
