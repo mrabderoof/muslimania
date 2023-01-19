@@ -170,7 +170,7 @@ def quiz(request):
  
 @login_required
 def addQuestion(request):    
-    if request.user.is_staff:
+    if request.user.is_authenticated:
         form=addQuestionform()
         if(request.method=='POST'):
             form=addQuestionform(request.POST)
@@ -186,7 +186,7 @@ def addQuestion(request):
 
 @login_required
 def addHangman(request):    
-    if request.user.is_staff:
+    if request.user.is_authenticated:
         form=addHangmanform()
         if(request.method=='POST'):
             form=addHangmanform(request.POST)
