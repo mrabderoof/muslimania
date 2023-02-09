@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class QuizModel(models.Model):
-    question = models.CharField(max_length=200,null=True)
+    question = models.CharField(unique=True, max_length=200,null=True)
     op1 = models.CharField(max_length=200,null=True)
     op2 = models.CharField(max_length=200,null=True)
     op3 = models.CharField(max_length=200,null=True)
@@ -18,6 +18,28 @@ class HangmanModel(models.Model):
     
     def __str__(self):
         return self.word
+
+class NameModel(models.Model):
+    name = models.CharField(max_length=200,null=True)
+    # hint = models.CharField(max_length=200,null=True)
+    
+    def __str__(self):
+        return self.name
+        
+class NamesModel(models.Model):
+    name = models.CharField(max_length=200,null=True)
+    hint = models.CharField(max_length=200,null=True)
+    
+    def __str__(self):
+        return self.name
+
+class logName(models.Model):
+    user = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
+    games = models.CharField(max_length=20)
+    gp = models.IntegerField()
+    wins = models.IntegerField()
+    turns = models.IntegerField()
+
 
 class HangmanGame(models.Model):
     user = models.ForeignKey(User, default=None, on_delete=models.CASCADE)

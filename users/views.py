@@ -9,13 +9,31 @@ from django.conf import settings
 
 from .forms import LinkForm, LoginForm, CreateProfileForm, EditProfileForm, CreateUserForm
 from .models import ProfileModel
+from games.models import logName
 from .filters import StoryFilter, BookFilter, AuthorFilter
 
 from stories.models import Author, Book
 
 @login_required
 def dashboard(request):
-    return render(request, 'social/dashboard.html', {'dashboard':'dashboard'})
+    user_data = logName.objects.filter(user_id=request.user)
+    
+    log_names = user_data.filter(games="names")
+    name_total = [0, 0, 0]
+    for i in log_names:
+        name_total[0] = name_total[0] + i.wins
+        name_total[1] = name_total[1] + i.turns
+        name_total[2] = name_total[2] + i.gp
+
+    log_numbers = user_data.filter(games="numbers")
+    log_quiz = user_data.filter(games="quiz")
+    log_hangman = user_data.filter(games="hangman")
+    
+    return render(request, 'social/dashboard.html', {'dashboard':'dashboard', 
+    "log_names": log_names, "name_total": name_total,
+    "log_numbers": log_numbers, "log_hangman": log_hangman,
+    "log_quiz": log_quiz,
+    })
 
 
 def redirect_after_login(request):
@@ -102,10 +120,10 @@ def profile_list(request):
 def profile_detail_view(request, id):
     about = Book.objects.filter(about__in=id)
     authors = Book.objects.filter(authors__in=id)
-    
 
     story_filter = BookFilter(request.GET, queryset=Book.objects.all())
-    context_404 = { "data": get_object_or_404(ProfileModel,id=id), "filter": story_filter, "about":about, "authors":authors, "value": "prophets"}
+    context_404 = { "data": get_object_or_404(ProfileModel,id=id), "filter": story_filter, "about":about, 
+    "authors":authors, "value": "prophets", }
     return render(request, "views/profile_detail_view.html", context_404)
 
        

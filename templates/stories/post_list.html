@@ -14,6 +14,7 @@
 
 {% block content %}
 
+
 <div class="w3-center w3-padding-32">
   <form action="create">
     <input class="w3-button" type="submit" value="+">
@@ -27,7 +28,7 @@
 {% for book in object_list %}
 <div class="w3-container w3-card w3-white w3-margin-bottom">
 <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal">
-  <a href="{% url 'posts:book-detail' book.id %}"></i>{{ book.title }}</a></h2>
+  <a href="{% url 'book-detail' book.id %}"></i>{{ book.title }}</a></h2>
   
 <div class="w3-container">
   {% if book.subtitle %}

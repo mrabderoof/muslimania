@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block style %}
+{% endblock %}
+
+{% block content %}
+<h1>Guess a Name Game</h1>
+
+<div class="w3-row-padding">
+  <div class="w3-third w3-container w3-margin-bottom">
+    <div class="w3-container w3-white">
+      <p><b><button onclick="myFunction()">Try it</button></b></p>
+      <p id="myDIV" style="display: none;">Number of letter: {{length}}</p>
+    </div>
+  </div>
+
+  <div class="w3-third w3-container w3-margin-bottom">
+    <div class="w3-container w3-white">
+    </div>
+  </div>
+
+  <div class="w3-third w3-container w3-margin-bottom">
+    <div class="w3-container w3-white">
+      <p><b><button onclick="myFunction2()">Hint</button></b></p>
+      <p id="myDIV2" style="display: none;">{{hints}}</p>
+    </div>
+  </div>
+</div>
+
+
+{% if success %}
+    <div>You win! Tries needed: {{turn}}.</div>
+    <p></p>
+    <form action="{% url 'guess_name' %}" method="post">
+        <input type="submit" value="Start new game">
+    </form>
+{% elif turn > 0 %}
+    <div>Try again! You guessed {{ guessed_number }}. The secret name is {{ hint }}.</div>
+{% else %}
+    <div>Welcome to the Game!</div>
+{% endif %}
+
+{% if not success%}
+    <form action="{% url 'guess_name' %}" method="post">
+        <label for="guess_game">Guess a number: </label>
+        <input id="guess_name" type="text" name="guess_name" value="" required>
+        <input type="submit" value="OK">
+    </form>
+{% endif %}
+
+{% block script %}
+<script>
+    function myFunction() {
+      var x = document.getElementById("myDIV");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+</script>
+<script>
+  function myFunction2() {
+    var x = document.getElementById("myDIV2");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+</script>
+{% endblock %}
+
+{% endblock %}

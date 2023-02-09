@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block Sidebar%}
+{% endblock %}
+
+{% block content %}
+{% if user.is_active %}
+<!-- Form to leave comment -->
+<div class="row mt-5">
+  <div class="col-lg-6 offset-lg-3">
+    <h3>Create Header</h3>
+    <form method='POST'>
+      {% csrf_token %}
+      <div class="form-group">
+        <span class="ml-2"></span>
+        {{ form.header.label_tag }}
+        <input type="text" class="form-control {% if form.header.errors %}is-invalid{% endif %}" id="id_header"
+          name="header" value="{{ form.header.value|default:'' }}">
+      </div>
+      <div class="form-group">
+        <span class="ml-2"></span>{{ form.content.label_tag }}
+        <textarea rows="20" cols="100" class="form-control {% if form.content.errors %}is-invalid{% endif %}" id="id_content"
+          name="content" rows="4">{{ form.content.value|default:'' }}</textarea>
+      </div>
+      <div class="form-group">
+        <span class="ml-2"></span>
+        {{ form.post.label_tag }}
+        <input type="text" class="form-control {% if form.post.errors %}is-invalid{% endif %}" id="post"
+          name="post" value="{{ form.post.value|default:'' }}">
+      </div>
+      <button class="btn btn-primary ml-2" type="submit">Create</button>
+    </form>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block Pagination%}
+{% endblock %}
+
+
+
+
+

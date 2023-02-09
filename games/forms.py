@@ -4,7 +4,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms 
 
- 
 class addQuestionform(ModelForm):
     class Meta:
         model=QuizModel
@@ -13,4 +12,19 @@ class addQuestionform(ModelForm):
 class addHangmanform(ModelForm):
     class Meta:
         model=HangmanModel
+        fields="__all__"
+
+class guessAddForm(ModelForm):
+    class Meta:
+        model=HangmanModel
+        fields="__all__"
+
+class guessNameAddForm(ModelForm):
+    class Meta:
+        model=NameModel
+        fields="__all__"
+
+class guessNameAddForm(ModelForm):
+    class Meta:
+        model=NamesModel
         fields="__all__"

@@ -7,6 +7,9 @@
 <link rel="stylesheet" href="/templates/static/style.css">
 <link rel="stylesheet" href="/templates/static/profile.css">
 <link rel="stylesheet" href="/templates/static/home.css">
+
+{% block style%}
+{% endblock%}
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 .w3-sidebar {
@@ -15,6 +18,30 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   top: 43px;
   bottom: 0;
   height: inherit;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
 }
 </style>
 </head>
@@ -30,7 +57,13 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
     <a href="{% url 'profiles' %}" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Profiles</a>
     <a href="/stories/books" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Stories</a>
 
-    <a href="{% url 'games' %}" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Games</a>
+    <div class="subnav">
+      <a href="{% url 'games' %}" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Games</a>
+      <div class="subnav-content">
+        <a href="#company">Leaderboard</a>
+      </div>
+    </div> 
+    
     <a href="{% url 'info' %}" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Info</a>   
     
     {% if user.is_active %}
@@ -55,7 +88,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   <h4 class="w3-bar-item"><b>Menu</b></h4>
   <a class="w3-bar-item w3-button w3-hover-black" href="{% url 'home' %}">Home</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="{% url 'profiles' %}">Profiles</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="/stories/books">Stories</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="{% url 'posts:stories' %}">Stories</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="{% url 'games' %}">Games</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="{% url 'info' %}">Info</a>
 </nav>
@@ -119,7 +152,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 <!-- END MAIN -->
 </div>
 
+{% block script %}
+{% endblock%}
 <script>
+
 // Get the Sidebar
 var mySidebar = document.getElementById("mySidebar");
 

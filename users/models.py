@@ -38,17 +38,3 @@ class bookmode(models.Model):
     about =  models.ManyToManyField(ProfileModel, blank=True)
 
 
-# class family (models.Model):
-
-    # mother = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
-    # father = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
-
-    # mothers = models.ManyToManyField("Profile", blank=True)
-    # fathers = models.ManyToManyField("Profile", blank=True)
-
-#     friends 
-#     mother
-#     father
-#     sister 
-#     brother 
-#     children 

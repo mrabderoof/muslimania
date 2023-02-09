@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block Sidebar%}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div align="right">
+  <h3>Contributers</h3>
+    {% for contrib in contribs %}
+      <p>{{contrib.contributer}}</p>
+    {% endfor %}
+</div>
+
+<div class="col-lg-6 offset-lg-3 mt-2">
+    <div class="card p-2">
+      {% for comment in comments %}
+      <div class="row">
+        <div class="col-12">
+          <strong>{{ comment.contributer }}</strong>
+          <strong>{{ comment.header }}</strong>
+        </div>
+        <div class="col-12">
+          <p class="m-1 mt-3">{{ comment.content }}</p>
+          <p class="text-right text-muted"><small>{{ comment.created }}</small></p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-lg-6 offset-lg-3">
+      <h3>Update Chapter</h3>
+      <form method='POST'>
+        {% csrf_token %}
+        <div class="form-group">
+          <span class="ml-2"></span>
+          {{ form.header.label_tag }}
+          <input type="text" class="form-control {% if form.header.errors %}is-invalid{% endif %}" id="id_header"
+            name="header" value="{{ form.header.value|default:'' }}">
+        </div>
+        <div class="form-group">
+          <span class="ml-2"></span>{{ form.content.label_tag }}
+          <textarea rows="20" cols="100" class="form-control {% if form.content.errors %}is-invalid{% endif %}" id="id_content"
+            name="content" rows="4">{{ form.content.value|default:'' }}</textarea>
+        </div>
+        <input type='hidden' value="Back" onclick="history.back()">
+        <button class="btn btn-primary ml-2" type="submit">Update</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block Pagination%}
+{% endblock %}
+
+
+
+
+

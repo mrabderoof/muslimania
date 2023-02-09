@@ -1,7 +1,7 @@
 from django import forms
 from .models import Author, Book, Publisher, Story, Comment
 
-class StoryForm(forms.ModelForm):
+class CreateChapterForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = '__all__'
@@ -9,7 +9,7 @@ class StoryForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('name', 'email', 'content')
+        fields = ('header', 'content')
 
 class CreateBookForm(forms.ModelForm):
     class Meta:
@@ -21,7 +21,7 @@ class CreatePublisherForm(forms.ModelForm):
         model = Publisher
         fields = '__all__'
 
-class CreateChapterForm(forms.ModelForm):
+class CreateStoryForm(forms.ModelForm):
     class Meta:
         model = Story
         fields = '__all__'

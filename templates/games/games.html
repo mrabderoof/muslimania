@@ -17,10 +17,17 @@
 
 <h3>Play</h3>
     <a href="{% url 'quiz' %}">quizz</a></br>
+    <a href="{% url 'guess' %}">guess</a></br>
+    <a href="{% url 'guess_name' %}">guess name</a></br>
+    <a href="{% url 'guess_names' %}">guess names</a></br>
+    <a href="{% url 'timed_guesses' %}">timed guesses</a></br>
     <a href="{% url 'hangman' %}">hangman</a>
 
 <h3>Custom Create </h3>
     <a href="{% url 'addQuestion' %}">quizz</a></br>
+    <a href="{% url 'addGuess' %}">guess</a></br>
+    <a href="{% url 'addGuessName' %}">guess name</a></br>
+    <a href="{% url 'addGuessNames' %}">guess names</a></br>
     <a href="{% url 'addHangman' %}">hangman</a>
 
 {% endblock %}

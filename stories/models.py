@@ -70,6 +70,9 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now= True)
 
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='likes')
+    dislikes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='dislikes')
+
     class Meta:
         ordering = ['-created_on']
 
@@ -77,14 +80,16 @@ class Post(models.Model):
         return self.title
 
 class Comment(models.Model):
-    name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100)
+    header = models.CharField(max_length=50)
     content = models.TextField()
-    post = models.ForeignKey(Book, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    
+    contributer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    updated = models.DateTimeField(auto_now_add=True)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('created',)
 
     def __str__(self):
-        return 'Comment by {}'.format(self.name)
+        return 'Chapter {}'.format(self.header)
