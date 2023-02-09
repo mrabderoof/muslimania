@@ -164,7 +164,7 @@ logging.basicConfig(format=logger_format)
 logger = logging.getLogger('hangman')
 logger.setLevel(logging.INFO)
 
-@login_required
+#Hangman
 def start_game(request):
     if request.method == 'GET':
         words = HangmanModel.objects.all()
@@ -277,7 +277,6 @@ def word_to_display(guessed, answer):
 # Quiz Game
 def quiz(request):
     if request.method == 'POST':
-        print(request.POST)
         questions=QuizModel.objects.all()
         score=0
         wrong=0
@@ -285,9 +284,6 @@ def quiz(request):
         total=0
         for q in questions:
             total+=1
-            print(request.POST.get(q.question))
-            print(q.ans)
-            print()
             if q.ans ==  request.POST.get(q.question):
                 score+=10
                 correct+=1
