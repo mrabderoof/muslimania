@@ -17,11 +17,8 @@
   <div id="glow"></div>
 
   <div class="w3-center w3-padding-32">
-    <form action="create">
+    <form action="{% url 'posts:post_create' %}">
       <input class="w3-button" type="submit" value="+">
-    </form>
-    <form action="/stories/books/chapter_create">
-      <input class="w3-button" type="submit" value="create chapter">
     </form>
   </div>
 

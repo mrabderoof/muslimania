@@ -15,7 +15,6 @@ class CreateBookForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = '__all__'
-
 class CreatePublisherForm(forms.ModelForm):
     class Meta:
         model = Publisher

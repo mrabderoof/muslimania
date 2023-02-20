@@ -88,17 +88,14 @@ def prophets_list(request):
 def profile_create_view(request):
     context = {}
     form = CreateProfileForm(request.POST or None)
-    form2 = LinkForm(request.POST or None)
     if form.is_valid():
         form.save()
-        form2.save()
         try:
             return redirect_after_login(request)
         except:
             pass
     context = {
         'form': form,
-        'form2': form2,
     }
     return render(request, "views/profile_create_view.html", context)
 

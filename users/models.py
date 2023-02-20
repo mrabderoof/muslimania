@@ -35,6 +35,6 @@ class ProfileModel(models.Model):
         return self.name
 
 class bookmode(models.Model):
-    about =  models.ManyToManyField(ProfileModel, blank=True)
+    about =  models.ManyToManyField('ProfileModel', blank=True)
 
 

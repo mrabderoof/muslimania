@@ -34,7 +34,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         messages.success(
             self.request, 'Your post has been created successfully.')
-        return reverse_lazy("posts:home")
+        return reverse_lazy("posts:stories")
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -347,7 +347,7 @@ def book_create_view(request):
     if form.is_valid():
         form.save()
         try:
-            return redirect('books')
+            return redirect('stories')
         except:
             pass
     context = {

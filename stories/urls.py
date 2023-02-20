@@ -10,8 +10,8 @@ urlpatterns = [
     path('books/', HomeView.as_view(), name='stories'),
     path('comment/<int:id>/', CommentView, name='comment_update'),
 
-    path('bookslist/', BooksListView.as_view(), name="books"),
-    path('books/<pk>/<slug:slug>', BookView.as_view(), name='books'),
+    path('bookslist/', BooksListView.as_view(), name="books_lists"),
+    path('books/<pk>/<slug:slug>', BookView.as_view(), name='books_slug'),
     path('books/<int:pk>/', BookDetailView.as_view(), name='book-detail'),
     
     path('books/create/', views.book_create_view, name="book_create_view"),
