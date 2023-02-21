@@ -21,10 +21,5 @@ class guessAddForm(ModelForm):
 
 class guessNameAddForm(ModelForm):
     class Meta:
-        model=NameModel
-        fields="__all__"
-
-class guessNameAddForm(ModelForm):
-    class Meta:
         model=NamesModel
         fields="__all__"

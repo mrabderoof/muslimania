@@ -18,13 +18,6 @@ class HangmanModel(models.Model):
     
     def __str__(self):
         return self.word
-
-class NameModel(models.Model):
-    name = models.CharField(max_length=200,null=True)
-    # hint = models.CharField(max_length=200,null=True)
-    
-    def __str__(self):
-        return self.name
         
 class NamesModel(models.Model):
     name = models.CharField(max_length=200,null=True)

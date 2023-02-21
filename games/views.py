@@ -32,29 +32,7 @@ def timed_guesses(request):
     context = {}
     return render(request,'games/games.html',context)
 
-names_list = NamesModel.objects.all()
-def get_name():
-    if names_list.exists():
-        ran = random.randint(0, names_list.count()-1)
-        name_list = names_list[ran].name
-        hints = names_list[ran].hint
-        length = len(name_list)
-    else:
-        name_list = "Mohammad"
-        hints = "SAW"
-        length = 8
-    name = [name_list, hints, length]
-    return name
-
-name = get_name()
-secret_name = name[0]
-hints = name[1]
-length = name[2]
-turn = 0
-success = False
-
 #Incrementor
-
 def Incrementor(request, game, win):
     b = logName.objects.filter(user=request.user).filter(games=game)
     flag = 0
@@ -88,10 +66,30 @@ def Incrementor(request, game, win):
 #         f = logName(user=request.user, games=game, turns=turn, wins=win, gp=1)
 #         f.save()
 
+
 #Guess name/prophet, surah, Juz, Prophet
+def get_name():
+    names_list = NamesModel.objects.all()
+    if names_list.exists():
+        ran = random.randint(0, names_list.count()-1)
+        name_list = names_list[ran].name
+        hints = names_list[ran].hint
+        length = len(name_list)
+    else:
+        name_list = "Mohammad"
+        hints = "SAW"
+        length = 8
+    name = [name_list, hints, length]
+    return name
+
 @csrf_exempt
 def guess_name(request):
-    global secret_name, turn, success, hints, length
+    name = get_name()
+    secret_name = name[0]
+    hints = name[1]
+    length = name[2]
+    turn = 0
+    success = False
     context = {}
     hint = ''
     guessed_name = None

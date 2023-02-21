@@ -1,9 +1,8 @@
 from django.contrib import admin
-from .models import QuizModel, HangmanModel, NameModel, NamesModel, logName
+from .models import QuizModel, HangmanModel, NamesModel, logName
 
 # Register your models here.
 admin.site.register(HangmanModel)
-admin.site.register(NameModel)
 admin.site.register(NamesModel)
 admin.site.register(logName)
 
